@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itheima.mapper.AuthorMapper">
+    <select id="findAuthorWithBook" parameterType="int"
+            resultMap="AuthorWithBookResult">
+        select  author.*,book.boo_id,book.boo_name
+        from t_author as author,t_book as book
+        where author.aut_id=book.boo_autid and author.aut_id=#{autId}
+    </select>
+    <resultMap id="AuthorWithBookResult" type="Author">
+        <id property="autId" column="aut_id"/>
+        <result property="autName" column="aut_name"/>
+        <result property="autCountry" column="aut_country"/>
+        <collection property="bookList" ofType="Book">
+            <id property="booId" column="boo_id"/>
+            <result property="booName" column="boo_name"/>
+        </collection>
+    </resultMap>
+</mapper>

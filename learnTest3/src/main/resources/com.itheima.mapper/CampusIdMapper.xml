@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--    mapper标签：配置各类声名
+        namespace:名称空间，由于映射文件可能有多个，为了防止crud语句的唯一标识被重复，需要设置空间名称。-->
+<mapper namespace="com.itheima.mapper.CampusIdMapper">
+    <select id="findCardByCardId" parameterType="int" resultType="CampusCard" >
+            select * from t_campuscard where card_id=#{cardId}
+    </select>
+    
+</mapper>
