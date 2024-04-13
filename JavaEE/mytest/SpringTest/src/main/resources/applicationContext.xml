@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--    将指定类配置给Spring，让Spring创建HelloWorld对象的实例-->
+    <bean id="HelloWorld" class="edu.hut.zj.pojo.HelloWorld">
+<!--        为userName属性赋值-->
+        <property name="userName" value="张静"></property>
+    </bean>
+</beans>

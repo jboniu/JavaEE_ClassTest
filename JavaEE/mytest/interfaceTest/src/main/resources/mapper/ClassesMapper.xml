@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--    mapper标签：配置各类声名
+        namespace:名称空间，由于映射文件可能有多个，为了防止crud语句的唯一标识被重复，需要设置空间名称。-->
+<mapper namespace="org.example.mapper.ClassesMapper">
+<!--嵌套结果-->
+    <select id="findClassesWithTeacher" parameterType="int"
+            resultMap="ClassesWithTeacherResult">
+        select  classes.*,teacher.*
+        from t_classes classes,t_teacher teacher,t_tcrelation tc
+        where teacher.tea_id=tc.tc_tcteaid and classes.cla_id=tc.tc_tcclaid and teacher.tea_id=#{teaId}
+    </select>
+    <resultMap id="ClassesWithTeacherResult" type="Classes">
+        <id property="claId" column="cla_id"/>
+        <result property="claName" column="cla_name"/>
+        <result property="claCount" column="cla_count"/>
+        <collection property="teacherList" ofType="Teacher">
+            <id property="teaId" column="tea_id"/>
+            <result property="teaName" column="tea_name"/>
+            <result property="teaSubject" column="tea_subject"/>
+        </collection>
+    </resultMap>
+
+<!--    嵌套查询-->
+
+    <select id="findTeacherWithClasses2" parameterType="int"
+            resultMap="TeacherWithClassesResult2">
+        select * from t_teacher teacher where teacher.tea_id=#{teaId}
+    </select>
+    <resultMap id="TeacherWithClassesResult2" type="Teacher">
+        <id property="teaId" column="tea_id"/>
+        <result property="teaName" column="tea_name"/>
+        <result property="teaSubject" column="tea_subject"/>
+
+        <collection property="classesList" column="cla_id" ofType="Classes"
+                    select="mapper.ClassesMapper.findTeacherByclaId">
+        </collection>
+    </resultMap>
+
+
+
+</mapper>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--    mapper标签：配置各类声名
+        namespace:名称空间，由于映射文件可能有多个，为了防止crud语句的唯一标识被重复，需要设置空间名称。-->
+<mapper namespace="org.example.mapper.UserMapper">
+<cache></cache>
+    <!--        select:查询的statement（声名），用来缩写查询语句
+                id:语句的唯一标识
+                resultType:配置返回的结果集类型
+                parameterType:传递额参数类型，可以省略-->
+    <select id="findById"
+            parameterType="int"
+            resultType="org.example.pojo.User">
+        select * from users where user_id=#{userId}
+    </select>
+
+    <insert id="insertById"
+            parameterType="org.example.pojo.User">
+        insert into users(user_id,user_name,user_age) values (#{userId},#{userName},#{userAge})
+    </insert>
+    <update id="updateUser"
+            parameterType="org.example.pojo.User">
+        update users set user_age=#{userAge} where user_id=#{userId}
+    </update>
+    <delete id="delectUser"
+            parameterType="org.example.pojo.User">
+        delete
+        from users
+        where user_id=#{userId};
+    </delete>
+</mapper>
