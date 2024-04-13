@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="book1" class="edu.hut.zj.pojo.Book1" lazy-init="true">
+		<constructor-arg name="id" value="1"></constructor-arg>
+		<constructor-arg name="name" value="图书1"></constructor-arg>
+		<constructor-arg name="author" value="作者1"></constructor-arg>
+	</bean>
+
+
+</beans>

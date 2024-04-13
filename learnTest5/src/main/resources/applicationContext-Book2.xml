@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="book2" class="edu.hut.zj.pojo.Book2" >
+        <property name="id" value="2"></property>
+        <property name="name" value="图书2"></property>
+        <property name="author" value="作者2"></property>
+    </bean>
+</beans>

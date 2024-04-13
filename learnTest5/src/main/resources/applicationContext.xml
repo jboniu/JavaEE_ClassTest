@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+        <bean id="bookDao" class="edu.hut.zj.dao.impl.BookDaoImpl">
+            <property name="autName" value="余华"></property>
+
+            <!-- Set的注入 -->
+
+            <property name="sets">
+                <set>
+                    <value>sets：第一个值</value>
+                    <value>sets：第二个值</value>
+                    <value>sets：第三个值</value>
+                </set>
+            </property>
+
+            <!-- List的注入 -->
+
+            <property name="lists">
+                <list>
+                    <value>lists：第一个值</value>
+                    <value>lists：第二个值</value>
+                    <value>lists：第三个值</value>
+                </list>
+            </property>
+
+            <!-- Map的注入 -->
+
+            <property name="maps">
+                <map>
+                    <entry key="maps-key1" value="：第一个值" />
+                    <entry key="maps-key2" value="：第二个值" />
+                    <entry key="maps-key3" value="：第三个值" />
+                </map>
+            </property>
+        </bean>
+
+        <bean id="bookService" class="edu.hut.zj.service.impl.BookServiceImpl">
+            <property name="bookDao" ref="bookDao"></property>
+        </bean>
+
+        <bean id="bookController" class="edu.hut.zj.controller.impl.BookControllerImpl">
+            <property name="bookService" ref="bookService"></property>
+        </bean>
+</beans>
